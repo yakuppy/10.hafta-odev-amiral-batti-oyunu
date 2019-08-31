@@ -1,0 +1,104 @@
+
+import time
+print('\u292A',"AMIRAL BATTI OYUNU",'\u292A')
+
+tahta = [''," 1", " 2", " 3"," 4", " 5", " 6"," 7", " 8", " 9","10\n",
+         "11", "12", "13","14", "15", "16","17", "18", "19","20\n",
+         "21", "22", "23","24", "25", "26","27", "28", "29","30\n",
+         "31", "32", "33","34", "35", "36","37", "38", "39","40\n",
+         "41", "42", "43","44", "45", "46","47", "48", "49","50\n",
+         "51", "52", "53","54", "55", "56","57", "58", "59","60\n",
+         "61", "62", "63","64", "65", "66","67", "68", "69","70\n",
+         "71", "72", "73","74", "75", "76","77", "78", "79","80\n",
+         "81", "82", "83","84", "85", "86","87", "88", "89","90\n",
+         "91", "92", "93","94", "95", "96","97", "98", "99","100\n",]
+
+k=0
+secilenler=[]
+while True:
+
+    secim=input("1 ile 100 arasindan bir sayi secerek atisinizi yapiniz    :")
+
+    if int(k)==15:
+        print("oynu kaybeyttiz")
+        break
+
+    if secim in secilenler:
+        print("daha once buraya atis yaptiniz")
+        continue
+
+    if secim == '14' or secim == '15' or secim == '16' or secim == '17':  # birinci dortlu gemi filosu
+        tahta[14] = "\u292A"
+        tahta[15] = "\u292A"
+        tahta[16] = "\u292A"
+        tahta[17] = "\u292A"
+        print("dortlu gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    elif secim == '31' or secim == '41' or secim == '51' or secim == '61':  # ikinci dortlu gemi filosu
+        tahta[31] = "\u292A"
+        tahta[41] = "\u292A"
+        tahta[51] = "\u292A"
+        tahta[61] = "\u292A"
+        print("dortlu gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    elif secim == '84' or secim == '85' or secim == '86':  # birinci uclu gemi filosu
+        tahta[84] = "\u292A"
+        tahta[85] = "\u292A"
+        tahta[86] = "\u292A"
+
+        print("uclu gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    elif secim == '19' or secim == '29' or secim == '39':  # ikinci uclu gemi filosu
+        tahta[19] = "\u292A"
+        tahta[29] = "\u292A"
+        tahta[39] = "\u292A"
+
+        print("uclu gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    elif secim == '12' or secim == '22':  # birinci ikili gemi filosu
+        tahta[12] = "\u292A"
+        tahta[22] = "\u292A"
+        print("ikili gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    elif secim == '5' or secim == '6':  # ikinci ikili  gemi filosu
+        tahta[5] = "\u292A"
+        tahta[6] = "\u292A"
+
+        print("ikili gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    elif secim == '89':  # birinci tekli gemi
+        tahta[89] = "\u292A"
+        print("tekli gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    elif secim == '2':  # ikinci tekli gemi
+        tahta[2] = "\u292A"
+        print("tekli gemiyi vurdunuz")
+        time.sleep(1)
+        for i in tahta:
+            print(i, end=" ")
+
+    else:
+        k+=1
+        print ("{} hakkiniz kaldi".format(15 - int(k)))
+        secilenler.append(secim)
