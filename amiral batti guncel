@@ -1,6 +1,18 @@
-
+'''ODEV: AMIRAL BATTI
+Deniz olarak varsayacagimiz 10x10'luk bir tablo olusturun (X-O-X oyununa benzer).
+Bu tabloya 2 adet 4 birimlik, 2 adet 3 birimlik, 2 adet 2 birimlik ve 2 adet 1 birimlik gemiler yerlestirin.
+Yerlestirdiginiz gemileri kullanici gormeyecek. Kullanicidan tablo uzerindeki herhangi bir noktaya hamlede bulunmasini isteyin.
+Kullanicinin hamlesi gemilerin herhangi bir noktasina isabet ederse kullaniciya tablo uzerinde bunu gosterin.
+Ayni sekilde bosa atis yaptiginda da kullaniciya tablo uzerinde bunu gosterin ve kullanicinin 5 sn boyunca hamle yapmasini engelleyin.
+Kullanici daha once hamle yapmis oldugu bir noktaya tekrar hamlede bulunursa bunu engelleyin.
+Kullaniciya toplamda 15 yanlis hamle hakki verin. Kullanici tum gemileri vurdugunda oyunu bitirin.
+Oyunu mumkun oldugunca fonksiyonlar kullanarak yapmanizi istiyoruz.
+BONUS(ISTEGE BAGLI): Yukaridaki versiyonda gemiler sabit.
+Oyunu her actigimizda gemilerin yeri degismiyor. Isteyenler gemilerin random yerlestirildigi bir versiyonunu yapabilir.
+'''
 import time
-print('\u292A',"AMIRAL BATTI OYUNU",'\u292A')
+print("\t"*2,'\u292A',"AMIRAL BATTI OYUNUNA HOSGELDINIZ",'\u292A','\033[94m')
+
 
 tahta = [''," 1", " 2", " 3"," 4", " 5", " 6"," 7", " 8", " 9","10\n",
          "11", "12", "13","14", "15", "16","17", "18", "19","20\n",
@@ -12,28 +24,37 @@ tahta = [''," 1", " 2", " 3"," 4", " 5", " 6"," 7", " 8", " 9","10\n",
          "71", "72", "73","74", "75", "76","77", "78", "79","80\n",
          "81", "82", "83","84", "85", "86","87", "88", "89","90\n",
          "91", "92", "93","94", "95", "96","97", "98", "99","100\n",]
-
+for i in tahta:
+    print(i, end=" ")
 k=0
 secilenler=[]
+isabet=[]
+gemi_yerleri=[14,15,16,17,31,41,51,61,84,85,86,19,29,39,12,22,5,6,89,2]
 while True:
 
-    secim=input("1 ile 100 arasindan bir sayi secerek atisinizi yapiniz    :")
+    secim=input("GEMILERI VURMAK ICIN 1 ILE 100 ARASINDA BIR SAYI SECINIZ ;")
 
-    if int(k)==15:
-        print("oynu kaybeyttiz")
+    if int(k)==14:
+        print("maalesf oynu kaybeyttiz")
+        print("oyundan cikiliyor.....")
+        time.sleep(3)
         break
 
     if secim in secilenler:
         print("daha once buraya atis yaptiniz")
         continue
 
-    if secim == '14' or secim == '15' or secim == '16' or secim == '17':  # birinci dortlu gemi filosu
+    elif secim == '14' or secim == '15' or secim == '16' or secim == '17':  # birinci dortlu gemi filosu
         tahta[14] = "\u292A"
         tahta[15] = "\u292A"
         tahta[16] = "\u292A"
         tahta[17] = "\u292A"
-        print("dortlu gemiyi vurdunuz")
-        time.sleep(1)
+
+        for i in ['14','15','16','17']:
+            isabet.append(i)
+            secilenler.append(i)
+        print("bravo dortlu gemiyi vurdunuz")
+        time.sleep(3)
         for i in tahta:
             print(i, end=" ")
 
@@ -42,7 +63,11 @@ while True:
         tahta[41] = "\u292A"
         tahta[51] = "\u292A"
         tahta[61] = "\u292A"
-        print("dortlu gemiyi vurdunuz")
+
+        for i in ['31','41','51','61']:
+            isabet.append(i)
+            secilenler.append(i)
+        print("bravo dortlu gemiyi vurdunuz")
         time.sleep(1)
         for i in tahta:
             print(i, end=" ")
@@ -52,6 +77,9 @@ while True:
         tahta[85] = "\u292A"
         tahta[86] = "\u292A"
 
+        for i in ['84','85','86']:
+            isabet.append(i)
+            secilenler.append(i)
         print("uclu gemiyi vurdunuz")
         time.sleep(1)
         for i in tahta:
@@ -62,6 +90,9 @@ while True:
         tahta[29] = "\u292A"
         tahta[39] = "\u292A"
 
+        for i in ['19','29','39']:
+            isabet.append(i)
+            secilenler.append(i)
         print("uclu gemiyi vurdunuz")
         time.sleep(1)
         for i in tahta:
@@ -70,6 +101,10 @@ while True:
     elif secim == '12' or secim == '22':  # birinci ikili gemi filosu
         tahta[12] = "\u292A"
         tahta[22] = "\u292A"
+
+        for i in ['12','22']:
+            isabet.append(i)
+            secilenler.append(i)
         print("ikili gemiyi vurdunuz")
         time.sleep(1)
         for i in tahta:
@@ -79,6 +114,10 @@ while True:
         tahta[5] = "\u292A"
         tahta[6] = "\u292A"
 
+        for i in [5,6]:
+            isabet.append(i)
+            secilenler.append(i)
+
         print("ikili gemiyi vurdunuz")
         time.sleep(1)
         for i in tahta:
@@ -86,6 +125,8 @@ while True:
 
     elif secim == '89':  # birinci tekli gemi
         tahta[89] = "\u292A"
+        secilenler.append(secim)
+        isabet.append(secim)
         print("tekli gemiyi vurdunuz")
         time.sleep(1)
         for i in tahta:
@@ -93,6 +134,8 @@ while True:
 
     elif secim == '2':  # ikinci tekli gemi
         tahta[2] = "\u292A"
+        secilenler.append(secim)
+        isabet.append(secim)
         print("tekli gemiyi vurdunuz")
         time.sleep(1)
         for i in tahta:
@@ -101,4 +144,22 @@ while True:
     else:
         k+=1
         print ("{} hakkiniz kaldi".format(15 - int(k)))
+
         secilenler.append(secim)
+        continue
+
+    print("*"*60,"\n","isabet alan gemiler    :",isabet,"\n","*"*60,)
+
+    if len(isabet)==len(gemi_yerleri):
+        print("BRAVO AMIRAL BATTI TUM GEMI FILOSU ISABET ALDI")
+        break
+
+
+
+
+
+
+
+
+
+
